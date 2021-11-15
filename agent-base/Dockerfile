@@ -2,6 +2,9 @@ FROM ubuntu:16.04
 
 COPY ./rancher-entrypoint.sh /
 ENV SSL_SCRIPT_COMMIT 98660ada3d800f653fc1f105771b5173f9d1a019
+
+LABEL org.opencontainers.image.authors="mgarcia@manas.tech"
+
 RUN apt-get update && \
         apt-get install --no-install-recommends -y \
         arptables \
@@ -23,7 +26,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /var/lib/cattle /var/lib/rancher && \
     ln -s /usr/bin/python2.7 /usr/bin/python && \
-    curl -s https://bootstrap.pypa.io/get-pip.py | python2.7 && \
+    curl -s https://bootstrap.pypa.io/pip/2.7/get-pip.py | python2.7 && \
     pip install cattle && \
     curl -sL https://github.com/rancher/runc/releases/download/share-mnt-v0.2.1/share-mnt > /usr/bin/share-mnt && \
     chmod +x /usr/bin/share-mnt && \

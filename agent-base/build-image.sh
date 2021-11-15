@@ -1,7 +1,7 @@
 #!/bin/bash
 
-REPO=${REPO:-rancher}
+REPO=${REPO:-"manastech/rancher-v1.6-agent-base"}
 TAG=${TAG:-dev}
 
-docker build -t $REPO/agent-base:${TAG} .
-echo Built $REPO/agent-base:${TAG}
+docker build -t $REPO:${TAG} .
+echo Built $REPO:${TAG}
